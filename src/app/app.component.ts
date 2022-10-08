@@ -17,7 +17,9 @@ export class AppComponent {
   defaultColDef = {
     resizable: true,
   };
-  public modules = AllModules;
+
+  /* Start the  */
+  /*   public modules = AllModules; */
   public sideBar = {
     toolPanels: [
       {
@@ -35,6 +37,8 @@ export class AppComponent {
         toolPanel: 'agFiltersToolPanel',
       },
     ],
+    defaultToolPanel: 'filters',
+    hiddenByDefault: true,
   };
 
   columnDefs = [
