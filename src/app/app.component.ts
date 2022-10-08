@@ -1,34 +1,42 @@
 import { Component } from '@angular/core';
 import { ColDef, GridReadyEvent, ColumnApi, GridApi } from 'ag-grid-community';
+
+import { AllModules } from '@ag-grid-enterprise/all-modules';
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  template: `<ag-grid-angular
-    style="width: 100%; height: 100%;"
-    class="ag-theme-alpine"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [rowData]="rowData"
-    [groupHeaderHeight]="groupHeaderHeight"
-    [headerHeight]="headerHeight"
-    [floatingFiltersHeight]="floatingFiltersHeight"
-    [pivotGroupHeaderHeight]="pivotGroupHeaderHeight"
-    [pivotHeaderHeight]="pivotHeaderHeight"
-    
-  ></ag-grid-angular> `,
 })
 export class AppComponent {
   defaultColDef = {
     resizable: true,
   };
-
+  public modules = AllModules;
+  public sideBar = {
+    toolPanels: [
+      {
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
+      },
+      {
+        id: 'filters',
+        labelDefault: 'Filters',
+        labelKey: 'filters',
+        iconKey: 'filter',
+        toolPanel: 'agFiltersToolPanel',
+      },
+    ],
+  };
   columnDefs = [
     {
-      headerName: 'Locations',
+      headerName: 'My Locations',
       children: [
         {
-          field: 'CompanyName',
+          field: 'Location',
           cellClass: 'cell-border cell-vertical-align-text-left',
           filter: 'agTextColumnFilter',
           minWidth: 360,
@@ -50,12 +58,42 @@ export class AppComponent {
           sortable: true,
           cellClass: 'cell-border cell-vertical-align-text-left',
           filter: true,
+          minWidth: 360,
         },
+      ],
+    },
+    {
+      headerName: 'User information',
+      children: [
         {
           field: 'Role',
           sortable: true,
           cellClass: 'cell-border cell-vertical-align-text-left',
           filter: true,
+          cellStyle: function (params) {
+            if (params.value == 'Master Gatekeeper') {
+              return {
+                color: 'white',
+                backgroundColor: 'rgb(9, 96, 114)',
+              };
+            }
+
+            if (params.value == 'Gatekeeper') {
+              return {
+                color: '#054E5D',
+                backgroundColor: 'rgb(231, 244, 247)',
+              };
+            }
+
+            if (params.value == 'Other') {
+              return {
+                color: '#778899',
+                backgroundColor: 'rgba(119, 136, 153, 0.3)',
+              };
+            } else {
+              return null;
+            }
+          },
         },
         {
           field: 'Name',
@@ -81,6 +119,9 @@ export class AppComponent {
         },
         {
           field: 'Action',
+          suppressMenu: true,
+
+          sortable: false,
           cellClass: 'cell-border cell-vertical-align-text-left',
           cellRenderer: function (params) {
             return '<a href="#">' + params.value + '</a>';
@@ -92,7 +133,7 @@ export class AppComponent {
 
   rowData = [
     {
-      CompanyName: 'Underwriters Laboratories B.V.',
+      Location: 'Underwriters Laboratories B.V.',
       CompanyID: '1153266',
       Address: 'Westervoortsedijk 60, Arnhem 6827 AT',
       Role: 'Master Gatekeeper',
@@ -101,7 +142,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      CompanyName: 'UL - Underwriter Laboratories Inc.',
+      Location: 'UL - Underwriter Laboratories Inc.',
       CompanyID: '1480932',
       Address: '333 Pfingsten Road, Northbrook IL 60062',
       Role: 'Gatekeeper',
@@ -110,7 +151,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      CompanyName: 'UL AG',
+      Location: 'UL AG',
       CompanyID: '1527663',
       Address: 'Dubai Science Park, Dubai',
       Role: 'Master Gatekeeper',
@@ -119,7 +160,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      CompanyName: 'UL AG, TAIWAN BRANCH',
+      Location: 'UL AG, TAIWAN BRANCH',
       CompanyID: '772121',
       Address: '260 Da-Yeh Road, Taipei 112',
       Role: 'Master Gatekeeper',
@@ -128,7 +169,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      CompanyName: 'UNDERWRITER LABORATORIES, INC',
+      Location: 'UNDERWRITER LABORATORIES, INC',
       CompanyID: '157893',
       Address: '333 Pfingsten Road, Northbrook IL 60062',
       Role: 'Master Gatekeeper',
@@ -137,7 +178,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      CompanyName: 'Underwriter Laboratories (Thailand) Limited',
+      Location: 'Underwriter Laboratories (Thailand) Limited',
       CompanyID: '1826898',
       Address: '888, Moo 5, Tambor, Samong 333',
       Role: 'Gatekeeper',
@@ -146,7 +187,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      CompanyName: 'Underwriters Laboratories of Canada',
+      Location: 'Underwriters Laboratories of Canada',
       CompanyID: '2396014',
       Address: '1040 Parsons Road SW, Edmonton T6X 0J4',
       Role: 'Gatekeeper',
