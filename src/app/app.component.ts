@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { ColDef, GridReadyEvent, ColumnApi, GridApi } from 'ag-grid-community';
+import {
+  ColDef,
+  GridReadyEvent,
+  ColumnApi,
+  GridApi,
+  StatusPanelDef,
+} from 'ag-grid-community';
 import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
@@ -30,6 +36,7 @@ export class AppComponent {
       },
     ],
   };
+
   columnDefs = [
     {
       headerName: 'My Locations',
@@ -127,7 +134,6 @@ export class AppComponent {
         {
           field: 'Action',
           suppressMenu: true,
-
           sortable: false,
           cellClass: 'cell-border cell-vertical-align-text-left',
           cellRenderer: function (params) {
@@ -137,7 +143,18 @@ export class AppComponent {
       ],
     },
   ];
-
+  rowSelection: 'single' | 'multiple' = 'multiple';
+  statusBar: {
+    statusPanels: StatusPanelDef[];
+  } = {
+    statusPanels: [
+      { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
+      /*   { statusPanel: 'agTotalRowCountComponent', align: 'center' },
+      { statusPanel: 'agFilteredRowCountComponent' },
+      { statusPanel: 'agSelectedRowCountComponent' },
+      { statusPanel: 'agAggregationComponent' }, */
+    ],
+  };
   rowData = [
     {
       Region: '<span class="fi fi-at"></span>',
