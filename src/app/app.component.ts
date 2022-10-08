@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ColDef, GridReadyEvent, ColumnApi, GridApi } from 'ag-grid-community';
-
 import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
@@ -35,6 +34,14 @@ export class AppComponent {
     {
       headerName: 'My Locations',
       children: [
+        {
+          field: 'Region',
+          width: 48,
+          cellClass: 'cell-border cell-vertical-align-text-left',
+          cellRenderer: function (params) {
+            return '' + params.value + '';
+          },
+        },
         {
           field: 'Location',
           cellClass: 'cell-border cell-vertical-align-text-left',
@@ -133,6 +140,7 @@ export class AppComponent {
 
   rowData = [
     {
+      Region: '<span class="fi fi-at"></span>',
       Location: 'Underwriters Laboratories B.V.',
       CompanyID: '1153266',
       Address: 'Westervoortsedijk 60, Arnhem 6827 AT',
@@ -142,6 +150,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
+      Region: '<span class="fi fi-us"></span>',
       Location: 'UL - Underwriter Laboratories Inc.',
       CompanyID: '1480932',
       Address: '333 Pfingsten Road, Northbrook IL 60062',
@@ -151,6 +160,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
+      Region: '<span class="fi fi-sa"></span>',
       Location: 'UL AG',
       CompanyID: '1527663',
       Address: 'Dubai Science Park, Dubai',
@@ -160,15 +170,17 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
+      Region: '<span class="fi fi-tw"></span>',
       Location: 'UL AG, TAIWAN BRANCH',
       CompanyID: '772121',
       Address: '260 Da-Yeh Road, Taipei 112',
       Role: 'Master Gatekeeper',
-      Name: 'Xing Kong',
-      Email: 'xing.kong@ullab2.com',
+      Name: 'Pam Tong',
+      Email: 'pam.tog@ullab2.com',
       Action: 'Edit',
     },
     {
+      Region: '<span class="fi fi-us"></span>',
       Location: 'UNDERWRITER LABORATORIES, INC',
       CompanyID: '157893',
       Address: '333 Pfingsten Road, Northbrook IL 60062',
@@ -178,6 +190,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
+      Region: '<span class="fi fi-th"></span>',
       Location: 'Underwriter Laboratories (Thailand) Limited',
       CompanyID: '1826898',
       Address: '888, Moo 5, Tambor, Samong 333',
@@ -187,6 +200,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
+      Region: '<span class="fi fi-ca"></span>',
       Location: 'Underwriters Laboratories of Canada',
       CompanyID: '2396014',
       Address: '1040 Parsons Road SW, Edmonton T6X 0J4',
