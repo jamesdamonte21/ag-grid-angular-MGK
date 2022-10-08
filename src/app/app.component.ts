@@ -36,7 +36,7 @@ export class AppComponent {
       children: [
         {
           field: 'Region',
-          width: 48,
+          width: 40,
           cellClass: 'cell-border cell-vertical-align-text-left',
           cellRenderer: function (params) {
             return '' + params.value + '';
@@ -160,7 +160,7 @@ export class AppComponent {
       Action: 'Edit',
     },
     {
-      Region: '<span class="fi fi-sa"></span>',
+      Region: '<span class="fi fi-ae"></span>',
       Location: 'UL AG',
       CompanyID: '1527663',
       Address: 'Dubai Science Park, Dubai',
