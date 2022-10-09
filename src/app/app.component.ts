@@ -18,7 +18,7 @@ export class AppComponent {
     resizable: true,
   };
 
-  /* Start the  */
+  /* Start the RIGHT SIDEBAR TOOLBAR */
   /*   public modules = AllModules; */
   public sideBar = {
     toolPanels: [
@@ -41,6 +41,7 @@ export class AppComponent {
     hiddenByDefault: true,
   };
 
+  /* ALL THE COLUMN DEFS */
   columnDefs = [
     {
       headerName: 'My Locations',
@@ -147,7 +148,11 @@ export class AppComponent {
       ],
     },
   ];
+
+  /* NOT SURE THIS IS NEEDED YET */
   rowSelection: 'single' | 'multiple' = 'multiple';
+
+  /* INCLUDE THE STATUS BAR */
   statusBar: {
     statusPanels: StatusPanelDef[];
   } = {
@@ -159,6 +164,8 @@ export class AppComponent {
       { statusPanel: 'agAggregationComponent' }, */
     ],
   };
+
+  /* HARD CODED ROW DATA */
   rowData = [
     {
       Region: '<span class="fi fi-at"></span>',
