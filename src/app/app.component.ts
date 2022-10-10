@@ -49,6 +49,8 @@ export class AppComponent {
         {
           field: 'Region',
           width: 40,
+          sortable: true,
+          filter: true,
           cellClass: 'cell-border cell-vertical-align-text-left',
           cellRenderer: function (params) {
             return '' + params.value + '';
