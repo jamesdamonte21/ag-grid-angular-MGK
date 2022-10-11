@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   ColDef,
   GridReadyEvent,
@@ -6,7 +7,6 @@ import {
   GridApi,
   StatusPanelDef,
 } from 'ag-grid-community';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
   selector: 'my-app',
@@ -18,8 +18,6 @@ export class AppComponent {
     resizable: true,
   };
 
-  /* Start the RIGHT SIDEBAR TOOLBAR */
-  /*   public modules = AllModules; */
   public sideBar = {
     toolPanels: [
       {
@@ -38,7 +36,7 @@ export class AppComponent {
       },
     ],
     defaultToolPanel: 'filters',
-    hiddenByDefault: true,
+    hiddenByDefault: false,
   };
 
   /* ALL THE COLUMN DEFS */
@@ -160,10 +158,11 @@ export class AppComponent {
   } = {
     statusPanels: [
       { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
-      /*   { statusPanel: 'agTotalRowCountComponent', align: 'center' },
-      { statusPanel: 'agFilteredRowCountComponent' },
       { statusPanel: 'agSelectedRowCountComponent' },
-      { statusPanel: 'agAggregationComponent' }, */
+      { statusPanel: 'agTotalRowCountComponent', align: 'center' },
+      { statusPanel: 'agFilteredRowCountComponent' },
+
+      /*  { statusPanel: 'agAggregationComponent' }, */
     ],
   };
 
