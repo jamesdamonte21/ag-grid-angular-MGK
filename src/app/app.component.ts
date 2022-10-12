@@ -48,7 +48,9 @@ export class AppComponent {
           field: 'Region',
           width: 40,
           sortable: true,
-          filter: true,
+          filter: false,
+
+          suppressFiltersToolPanel: true,
           cellClass: 'cell-border cell-vertical-align-text-left',
           cellRenderer: function (params) {
             return '' + params.value + '';
@@ -158,9 +160,9 @@ export class AppComponent {
   } = {
     statusPanels: [
       { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
-      { statusPanel: 'agSelectedRowCountComponent' },
+      /* { statusPanel: 'agSelectedRowCountComponent' },
       { statusPanel: 'agTotalRowCountComponent', align: 'center' },
-      { statusPanel: 'agFilteredRowCountComponent' },
+      { statusPanel: 'agFilteredRowCountComponent' }, */
 
       /*  { statusPanel: 'agAggregationComponent' }, */
     ],
